@@ -1,8 +1,6 @@
 "use client";
 import {
   Save2,
-  Login,
-  Logout,
   Chart1,
   TrendUp,
   FtxToken,
@@ -14,102 +12,132 @@ import {
   NotificationBing,
 } from "iconsax-react";
 import Link from "next/link";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
+import Togglesidebar from "./components/togglesidebar/togglesidebar";
 
 const Sidebar = () => {
   const pathname = usePathname();
+  const [sidebar, setSidebar] = useState(false);
+  const [phoneSidebar, setPhoneSidebar] = useState(false);
+
+  //This Function is to open and close the SideBar Component.
+  const toggleSideBar = () => {
+    if (!sidebar) {
+      setSidebar(true);
+    } else {
+      setSidebar(false);
+    }
+  };
+
+  //prettier-ignore
   return (
-    <header className="flex flex-col min-h-screen max-h-screen scrollbar items-center p-5 gap-[25px] border-r w-full max-w-[220px] border-r-[#D0D0D0] overflow-y-scroll">
-      <h1 className="text-[#543EE0] font-medium text-[25px]">
-        <Link href="/">CHATTER</Link>
-      </h1>
+    <header className={`flex h-screen border-r w-full max-w-[300px] border-r-[#D0D0D0] z-10 overflow-y-hidden  ${!sidebar && "max-lg:max-w-fit"} max-sm:absolute max-sm:max-w-full`}>
+      <section className="flex scrollbar whitespace-nowrap flex-col gap-[25px] min-h-screen max-h-full w-full overflow-y-scroll items-center pb-5 pt-2 bg-white max-lg:pt-4 max-sm:w-3/4 max-sm:border-r max-sm:border-r-[#D0D0D0]">
 
-      <nav className="flex flex-col gap-5">
-        <span className="text-[16px] flex gap-2 items-center">
-          <Briefcase className="size-[22px]" />
-          <h3>Overview</h3>
-        </span>
+        <h1 className="text-[#543EE0] font-medium text-[30px] max-lg:hidden max-sm:flex max-md:text-[20px] ">
+          <Link href="/">CHATTER</Link>
+        </h1>
 
-        <div className="flex flex-col pl-3 text-[14px] gap-5 text-[#626262]">
-          <Link
-            href="/"
-            className={`flex gap-2 hover:text-[#543EE0] ${
-              pathname === "/" && "text-[#543EE0]"
-            }`}
-          >
-            <FtxToken size="20" />
-            <p>Feeds</p>
-          </Link>
+        <Togglesidebar toggle={sidebar} togglefunction={toggleSideBar} />
 
-          <Link
-            href="/bookmark"
-            className={`flex gap-2 hover:text-[#543EE0] ${
-              pathname === "/bookmark" && "text-[#543EE0]"
-            }`}
-          >
-            <Save2 size="20" />
-            <p>Bookmarks</p>
-          </Link>
+        <nav className={`flex flex-col gap-5 w-full max-w-[150px] ${!sidebar && "hidesidebartext"}`}>
 
-          <Link
-            href="/team_blog"
-            className={`flex gap-2 hover:text-[#543EE0] ${
-              pathname === "/team_blog" && "text-[#543EE0]"
-            }`}
-          >
-            <Profile2User size="20" />
-            <p>Team blogs</p>
-          </Link>
+          <span className="text-[18px] flex gap-2 items-center">
+            <Briefcase className="size-[25px]" />
+            <h3>Overview</h3>
+          </span>
 
-          <Link
-            href="/draft"
-            className={`flex gap-2 hover:text-[#543EE0] ${
-              pathname === "/draft" && "text-[#543EE0]"
-            }`}
-          >
-            <DirectboxDefault size="20" />
-            <p>Drafts</p>
-          </Link>
+          <div className="flex flex-col pl-2 text-[14px] gap-5 text-[#626262] max-sm:pl-0">
+            <Link href="/" className={`flex gap-2 hover:text-[#543EE0] ${pathname === "/" && "text-[#543EE0]"}`}>
+              <FtxToken size="20" />
+              <p>Feeds</p>
+            </Link>
 
-          <Link
-            href="/analytics"
-            className={`flex gap-2 hover:text-[#543EE0] ${
-              pathname === "/analytics" && "text-[#543EE0]"
-            }`}
-          >
-            <Chart1 variant="Broken" size="20" />
-            <p>Analytics</p>
-          </Link>
-        </div>
-      </nav>
+            <Link href="/bookmark" className={`flex gap-2 hover:text-[#543EE0] ${pathname === "/bookmark" && "text-[#543EE0]"}`}>
+              <Save2 size="20" />
+              <p>Bookmarks</p>
+            </Link>
 
-      <nav className="flex flex-col gap-5">
-        <span className="text-[16px] flex gap-2 items-center">
-          <TrendUp className="size-[22px]" />
-          <h3>Trending tags</h3>
-        </span>
+            <Link href="/team_blog" className={`flex gap-2 hover:text-[#543EE0] ${pathname === "/team_blog" && "text-[#543EE0]" }`}>
+              <Profile2User size="20" />
+              <p>Team blogs</p>
+            </Link>
 
-        <div className="flex flex-col pl-3 text-[14px] gap-5 text-[#626262]"></div>
-      </nav>
+            <Link href="/draft" className={`flex gap-2 hover:text-[#543EE0] ${pathname === "/draft" && "text-[#543EE0]"}`}>
+              <DirectboxDefault size="20" />
+              <p>Drafts</p>
+            </Link>
 
-      <nav className="flex flex-col gap-5">
-        <span className="text-[16px] flex gap-2 items-center">
-          <Personalcard className="size-[22px]" />
-          <h3>Personal</h3>
-        </span>
+            <Link href="/analytics" className={`flex gap-2 hover:text-[#543EE0] ${pathname === "/analytics" && "text-[#543EE0]"}`}>
+              <Chart1 variant="Broken" size="20" />
+              <p>Analytics</p>
+            </Link>
+            
+          </div>
+        </nav>
 
-        <div className="flex flex-col pl-3 text-[14px] gap-5 text-[#626262]">
-          <Link
-            href="/notifications"
-            className={`flex gap-2 hover:text-[#543EE0] ${
-              pathname === "/notifications" && "text-[#543EE0]"
-            }`}
-          >
-            <NotificationBing size="20" />
-            <p>Notifications</p>
-          </Link>
-        </div>
-      </nav>
+        <nav className={`flex flex-col gap-5 w-full max-w-[150px] ${!sidebar && "hidesidebartext"}`}>
+          <span className="text-[18px] flex gap-2 items-center">
+            <TrendUp className="size-[25px]" />
+            <h3>Trending tags</h3>
+          </span>
+          <div className="flex flex-col pl-2 text-[14px] gap-5 text-[#626262] max-sm:pl-0"></div>
+        </nav>
+
+        <nav className={`flex flex-col gap-5 w-full max-w-[150px] ${!sidebar && "hidesidebartext"}`}>
+          <span className="text-[16px] flex gap-2 items-center">
+            <Personalcard className="size-[22px]" />
+            <h3>Personal</h3>
+          </span>
+          <div className="flex flex-col pl-5 text-[14px] gap-5 text-[#626262]">
+            <Link href="/notifications" className={`flex gap-2 hover:text-[#543EE0] ${pathname === "/notifications" && "text-[#543EE0]"}`}>
+              <NotificationBing size="20" />
+              <p>Notifications</p>
+            </Link>
+            <Link href="/notifications" className={`flex gap-2 hover:text-[#543EE0] ${pathname === "/notifications" && "text-[#543EE0]"}`}>
+              <NotificationBing size="20" />
+              <p>Notifications</p>
+            </Link>
+            <Link href="/notifications" className={`flex gap-2 hover:text-[#543EE0] ${pathname === "/notifications" && "text-[#543EE0]"}`}>
+              <NotificationBing size="20" />
+              <p>Notifications</p>
+            </Link>
+            <Link href="/notifications" className={`flex gap-2 hover:text-[#543EE0] ${pathname === "/notifications" && "text-[#543EE0]"}`}>
+              <NotificationBing size="20" />
+              <p>Notifications</p>
+            </Link>
+            <Link href="/notifications" className={`flex gap-2 hover:text-[#543EE0] ${pathname === "/notifications" && "text-[#543EE0]"}`}>
+              <NotificationBing size="20" />
+              <p>Notifications</p>
+            </Link>
+            <Link href="/notifications" className={`flex gap-2 hover:text-[#543EE0] ${pathname === "/notifications" && "text-[#543EE0]"}`}>
+              <NotificationBing size="20" />
+              <p>Notifications</p>
+            </Link>
+            <Link href="/notifications" className={`flex gap-2 hover:text-[#543EE0] ${pathname === "/notifications" && "text-[#543EE0]"}`}>
+              <NotificationBing size="20" />
+              <p>Notifications</p>
+            </Link>
+            <Link href="/notifications" className={`flex gap-2 hover:text-[#543EE0] ${pathname === "/notifications" && "text-[#543EE0]"}`}>
+              <NotificationBing size="20" />
+              <p>Notifications</p>
+            </Link>
+            <Link href="/notifications" className={`flex gap-2 hover:text-[#543EE0] ${pathname === "/notifications" && "text-[#543EE0]"}`}>
+              <NotificationBing size="20" />
+              <p>Notifications</p>
+            </Link>
+            <Link href="/notifications" className={`flex gap-2 hover:text-[#543EE0] ${pathname === "/notifications" && "text-[#543EE0]"}`}>
+              <NotificationBing size="20" />
+              <p>Notifications</p>
+            </Link>
+            <Link href="/notifications" className={`flex gap-2 hover:text-[#543EE0] ${pathname === "/notifications" && "text-[#543EE0]"}`}>
+              <NotificationBing size="20" />
+              <p>Notifications</p>
+            </Link>
+          </div>
+        </nav>
+      </section>
     </header>
   );
 };

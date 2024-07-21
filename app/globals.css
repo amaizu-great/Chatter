@@ -22,3 +22,64 @@
     scrollbar-color: #8888888e transparent;
   }
 }
+@media screen and (max-width: 1023px) {
+  .hidesidebartext {
+    margin: 0 30px;
+    max-width: fit-content;
+  }
+  .hidesidebartext > div {
+    padding-left: 0;
+  }
+  .hidesidebartext p {
+    display: none;
+  }
+  .hidesidebartext h3 {
+    display: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  .slidein {
+    animation: searchbar-side-in 0.5s forwards ease-out;
+  }
+  .slideout {
+    animation: searchbar-side-out 0.5s forwards ease-out;
+  }
+}
+@media screen and (max-width: 639px) {
+  .hidesidebartext {
+    margin: 0;
+    max-width:140px;
+  }
+  .hidesidebartext > div {
+    padding-left: 20px;
+  }
+  .hidesidebartext p {
+    display: block;
+  }
+  .hidesidebartext h3 {
+    display: block;
+    /* white-space: nowrap; */
+  }
+}
+@keyframes searchbar-side-in {
+  0% {
+    transform: translateX(-100%);
+    visibility: visible;
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    visibility: visible;
+    opacity: 1;
+  }
+}
+@keyframes searchbar-side-out {
+  0% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
