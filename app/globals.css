@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+.authsidescreen{
+  width: 45%;
+  height: 100%;
+  display: flex;
+  background: url("../public/chatter auth pic.jpeg") no-repeat center center;
+  background-size: cover;
+}
+.left{
+  animation: slide-left ease-out 150ms forwards;
+}
+.right{
+  animation: slide-right ease-in 150ms forwards;
+}
 @layer utilities {
   /* Webkit (Chrome, Safari, Opera) */
   .scrollbar::-webkit-scrollbar {
@@ -59,6 +72,26 @@
   .hidesidebartext h3 {
     display: block;
     /* white-space: nowrap; */
+  }
+}
+@keyframes slide-left {
+  0% {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+@keyframes slide-right {
+  0% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 1;
   }
 }
 @keyframes searchbar-side-in {
