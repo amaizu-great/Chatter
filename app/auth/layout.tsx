@@ -6,11 +6,8 @@ export const metadata: Metadata = {
   description: "Sign Up To Chatter App",
 };
 
-export default function AuthLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+//prettier-ignore
+export default function AuthLayout({children}: Readonly<{children: React.ReactNode;}>) {
   return (
     <main className="flex h-screen w-full">
       <SideScreen />

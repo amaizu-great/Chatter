@@ -1,11 +1,19 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import NavBarProfile from "./profile/profile";
 import SearchBar from "./searchbar/searchbar";
 import { NotificationBing, SearchNormal1 } from "iconsax-react";
 
-const Navbar = () => {
+interface NavbarProps {
+  toggle: boolean;
+  togglefunction: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = (props) => {
   const [searchbar, setSeachbar] = useState(false);
+
+  const { toggle, togglefunction } = props;
 
   // This Function is to open and close the SearchBar Component When its in a responsive view (768px).
   const toggleSeachBar = () => {
@@ -23,13 +31,14 @@ const Navbar = () => {
         <Link href="/">CHATTER</Link>
       </h1>
 
-      <div className="flex justify-self-end">
+      <div className="flex items-center gap-2">
         <SearchNormal1
           size="20"
           onClick={toggleSeachBar}
           className="hidden max-md:flex"
         />
         <NotificationBing size="15" className="max-md:hidden" />
+        <NavBarProfile toggle={toggle} togglefunction={togglefunction} />
       </div>
     </header>
   );

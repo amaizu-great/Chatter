@@ -37,7 +37,7 @@
 }
 @media screen and (max-width: 1023px) {
   .hidesidebartext {
-    margin: 0 30px;
+    margin: 0 20px;
     max-width: fit-content;
   }
   .hidesidebartext > div {
@@ -61,10 +61,10 @@
 @media screen and (max-width: 639px) {
   .hidesidebartext {
     margin: 0;
-    max-width:140px;
+    max-width:150px;
   }
   .hidesidebartext > div {
-    padding-left: 20px;
+    padding-left: 8px;
   }
   .hidesidebartext p {
     display: block;
@@ -72,6 +72,12 @@
   .hidesidebartext h3 {
     display: block;
     /* white-space: nowrap; */
+  }
+  .hidesidebar{
+    animation: searchbar-side-out 0.5s forwards ease-out;
+  }
+  .showsidebar{
+    animation: searchbar-side-in 0.5s forwards ease-out;
   }
 }
 @keyframes slide-left {
@@ -113,6 +119,7 @@
   }
   100% {
     transform: translateX(-100%);
+    visibility: hidden;
     opacity: 0;
   }
 }
