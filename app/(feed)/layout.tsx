@@ -18,7 +18,7 @@ export default function FeedsLayout({children}: Readonly<{children: React.ReactN
   return (
     <main className="flex">
       <Sidebar toggle={sideBar} />
-      <main className="flex flex-col w-full">
+      <main className="flex flex-col w-full gap-8 items-center">
         <Navbar toggle={sideBar} togglefunction={toggleSideBar}/>
         {children}
       </main>

@@ -5,7 +5,6 @@ import {
   TrendUp,
   FtxToken,
   Briefcase,
-  ProfileTick,
   Profile2User,
   Personalcard,
   DirectboxDefault,

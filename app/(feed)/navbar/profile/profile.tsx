@@ -9,19 +9,16 @@ interface ProfileProps {
 }
 
 const NavBarProfile: React.FC<ProfileProps> = (props) => {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
   const { toggle, togglefunction } = props;
 
   //i am creating this component to display the user profile image if he/she has one or it should fall back to a default icon
   //also this component is a link when its in big sreen, however its also a button thats open up the sibebar on small screen
   //prettier-ignore
   const Profile_Icon = () => {
-    const user = false
-    const test = () =>{
-        console.log("done")
-    }
+    const userprofile = false
 
-  if (user) {
+  if (userprofile) {
     return (
       <>
         <div style={{background: `url(${'profile'}) no-repeat center`, backgroundSize: "cover"}} className="max-sm:hidden">

@@ -2,17 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-.authsidescreen{
+.authsidescreen {
   width: 45%;
   height: 100%;
   display: flex;
   background: url("../public/chatter auth pic.jpeg") no-repeat center center;
   background-size: cover;
 }
-.left{
+.left {
   animation: slide-left ease-out 150ms forwards;
 }
-.right{
+.right {
   animation: slide-right ease-in 150ms forwards;
 }
 @layer utilities {
@@ -61,7 +61,7 @@
 @media screen and (max-width: 639px) {
   .hidesidebartext {
     margin: 0;
-    max-width:150px;
+    max-width: 150px;
   }
   .hidesidebartext > div {
     padding-left: 8px;
@@ -73,10 +73,10 @@
     display: block;
     /* white-space: nowrap; */
   }
-  .hidesidebar{
+  .hidesidebar {
     animation: searchbar-side-out 0.5s forwards ease-out;
   }
-  .showsidebar{
+  .showsidebar {
     animation: searchbar-side-in 0.5s forwards ease-out;
   }
 }
