@@ -17,7 +17,7 @@ const FeedsNav = () => {
         {pathname == "/" ? <span className="w-full h-[3px] bg-[#543EE0]"></span> : null}
       </Link>
 
-      <Link href="/following" className="flex flex-col h-[95%] pt-2 justify-between group">
+      <Link href="/following" className="flex flex-col h-[95%] pt-2 justify-between">
         <p>Following</p>
         {pathname == "/following" ? <span className="w-full h-[3px] bg-[#543EE0]"></span> : null}
       </Link>

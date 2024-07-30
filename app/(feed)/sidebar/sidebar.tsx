@@ -13,6 +13,7 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import LogOutButton from "./components/logoutbutton/logoutButton";
 import Togglesidebar from "./components/togglesidebar/togglesidebar";
 
 interface SideBarProps {
@@ -98,6 +99,8 @@ const Sidebar: React.FC<SideBarProps> = (props) => {
               <NotificationBing size="20" />
               <p>Notifications</p>
             </Link>
+            
+            <LogOutButton />
           </div>
         </nav>
       </section>

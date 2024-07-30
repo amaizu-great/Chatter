@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 import { ProfileAdd, ProfileTick } from "iconsax-react";
 
 interface ProfileProps {
@@ -10,21 +11,31 @@ interface ProfileProps {
 
 const NavBarProfile: React.FC<ProfileProps> = (props) => {
   const [user, setUser] = useState(false);
-  const { toggle, togglefunction } = props;
+  const { toggle, togglefunction }: any = props;
+
+  const { status, data } = useSession();
+  if (status === "authenticated") {
+    if (!user) {
+      setUser(true);
+    }
+  } else {
+    if (user) {
+      setUser(false);
+    }
+  }
 
   //i am creating this component to display the user profile image if he/she has one or it should fall back to a default icon
   //also this component is a link when its in big sreen, however its also a button thats open up the sibebar on small screen
   //prettier-ignore
   const Profile_Icon = () => {
-    const userprofile = false
-
-  if (userprofile) {
+  if (data) {
+    let {user}:any = data
     return (
       <>
-        <div style={{background: `url(${'profile'}) no-repeat center`, backgroundSize: "cover"}} className="max-sm:hidden">
+        <div style={{background: `url(${user.image !== "" && user.image}) no-repeat center`, backgroundSize: "cover"}} className="max-sm:hidden rounded-full size-8">
           <div></div>
         </div>
-        <div style={{background: `url(${'profile'}) no-repeat center`, backgroundSize: "cover"}} onClick={togglefunction} className={`hidden max-sm:flex ${toggle && "z-10"}`} >
+        <div style={{background: `url(${user.image !== "" && user.image}) no-repeat center`, backgroundSize: "cover"}} onClick={togglefunction} className={`hidden rounded-full size-7 max-sm:flex ${toggle && "z-10"}`} >
           <div></div>
         </div>
       </>
