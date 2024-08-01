@@ -37,4 +37,8 @@ yarn-error.log*
 next-env.d.ts
 
 #Ignore specific files
+lib
 redux
+entities
+utilities
+customFunction

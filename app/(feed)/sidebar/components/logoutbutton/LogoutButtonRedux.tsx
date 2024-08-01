@@ -2,8 +2,9 @@
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { Login, LogoutCurve } from "iconsax-react";
 import { useDispatch, useSelector } from "react-redux";
+import { LoginCurve, LogoutCurve } from "iconsax-react";
+import setAuthState from "@/customFunction/setAuthState/setAuthState";
 import { selectAuth, setAuthStateFalse } from "@/redux/features/authSlice";
 
 const LogoutButtonRedux = () => {
@@ -16,11 +17,13 @@ const LogoutButtonRedux = () => {
     setIsClient(true);
   }, []);
 
+  setAuthState();
+
   if (!isClient) {
-    // Render placeholder content or nothing until the client is ready
-    return( <div>
-       <svg className="animation-spin size-2" viewBox="0 0 24 24"></svg> 
-    </div>);
+    // Rendring Loading animation until the client is ready
+    return (
+      <div className="bg-white animate-spin size-6 rounded-full border-[2px] border-t-[#543EE0] border-r-[#543EE0]"></div>
+    );
   }
 
   // functions
@@ -38,8 +41,8 @@ const LogoutButtonRedux = () => {
         </button>
       ) : (
         <Link href="/auth/signup" className="flex gap-2 text-[#543EE0]">
-          <Login />
-          Log in
+          <LoginCurve />
+          <p>Log in</p>
         </Link>
       )}
     </>

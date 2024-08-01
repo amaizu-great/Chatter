@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import NavBarProfile from "./profile/profile";
 import SearchBar from "./searchbar/searchbar";
+import NavBarProfile from "./navbarProfile/NavbarProfile";
 import { NotificationBing, SearchNormal1 } from "iconsax-react";
 
 interface NavbarProps {
@@ -38,7 +38,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
           className="hidden max-md:flex"
         />
         <NotificationBing size="15" className="max-md:hidden" />
-        <NavBarProfile toggle={toggle} togglefunction={togglefunction} />
+        <NavBarProfile props={props} />
       </div>
     </header>
   );
