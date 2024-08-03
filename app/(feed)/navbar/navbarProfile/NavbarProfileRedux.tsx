@@ -46,8 +46,9 @@ const NavbarProfileRedux: React.FC<NavBarProfileReduxProps> = (props) => {
           setUserDetails(user);
         }
       };
-
-      getUserDetails();
+      if(authState){
+        // getUserDetails();
+      }
     }, []);
     
 
@@ -55,10 +56,9 @@ const NavbarProfileRedux: React.FC<NavBarProfileReduxProps> = (props) => {
         return (
           <>
             <div style={{background: `url(${userDetails.profilePic}) no-repeat center`, backgroundSize: "cover"}} className="max-sm:hidden rounded-full size-8">
-              <div className="size-full bg-[#00000041] rounded-full"></div>
             </div>
+
             <div style={{background: `url(${userDetails.profilePic}) no-repeat center`, backgroundSize: "cover"}} onClick={togglefunction} className={`hidden rounded-full size-7 max-sm:flex ${toggle && "z-10"}`} >
-              <div className="size-full bg-[#00000041] rounded-full"></div>
             </div>
           </>
         );

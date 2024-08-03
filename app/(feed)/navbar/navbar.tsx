@@ -25,7 +25,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
   };
 
   return (
-    <header className="flex w-full border min-h-[40px] border-[#D0D0D0] py-[10px] items-center justify-around relative max-md:justify-between max-md:px-6">
+    <header className="flex w-full border min-h-[40px] border-[#D0D0D0] py-3 items-center justify-around relative max-md:justify-between max-md:px-6 max-md:py-5 max-sm:px-4">
       <SearchBar togglefunction={toggleSeachBar} toggle={searchbar} />
       <h1 className="hidden text-[#543EE0] font-medium text-[20px] max-md:flex">
         <Link href="/">CHATTER</Link>

@@ -4,7 +4,7 @@ import { signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { LoginCurve, LogoutCurve } from "iconsax-react";
-import setAuthState from "@/customFunction/setAuthState/setAuthState";
+import setAuthState from "@/utilities/setAuthState";
 import { selectAuth, setAuthStateFalse } from "@/redux/features/authSlice";
 
 const LogoutButtonRedux = () => {

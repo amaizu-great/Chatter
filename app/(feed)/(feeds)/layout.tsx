@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { Edit2 } from "iconsax-react";
 import FeedsNav from "./feedsNav/feedsnav";
-
 
 //prettier-ignore
 export default function FeedsLayout({children}: Readonly<{children: React.ReactNode}>) {
@@ -12,10 +12,10 @@ export default function FeedsLayout({children}: Readonly<{children: React.ReactN
           <h3 className="text-[20px] font-medium leading-none max-md:text-[19px] max-sm:text-[18px]">FEEDS</h3>
           <p>Explore different content you would love </p>
         </div>
-        <button className="flex p-2 gap-2 text-[12px] items-center rounded-[4px] text-white bg-[#543EE0]">
+        <Link href="/post" className="flex py-2 px-3 gap-2 text-[12px] items-center rounded-[4px] text-white bg-[#543EE0] active:bg-[#4131af] max-sm:px-2">
           <Edit2 size="20"/>
           <p className="max-md:hidden">Post a content</p>
-        </button>
+        </Link>
       </section>
       <section className="flex flex-col w-[80%] max-md:w-[85%] max-sm:w-[90%]">
         <FeedsNav />
